@@ -15,7 +15,7 @@ datosCentroAmerica  <- datosCentroAmerica[datosCentroAmerica$Item.Type =="Clothe
 columnasReporte1 <- c("Country","Total.Profit")
 datosCentroAmerica <- datosCentroAmerica[columnasReporte1]
 datosCentroAmerica <- aggregate(datosCentroAmerica$Total.Profit, by=list(Paises=datosCentroAmerica$Country), FUN=sum)
-datosCentroAmerica <- datosCentroAmerica[ datosCentroAmerica$Paises == "Guatemala" | datosCentroAmerica$Paises == "Honduras" | datosCentroAmerica$Paises == "Panama" | datosCentroAmerica$Paises == "Nicaragua" | datosCentroAmerica$Paises == "Costa Rica"| datosCentroAmerica$Paises == "El Salvador",]
+datosCentroAmerica <- datosCentroAmerica[ datosCentroAmerica$Paises == "Guatemala" | datosCentroAmerica$Paises == "Honduras" | datosCentroAmerica$Paises == "Panama" | datosCentroAmerica$Paises == "Nicaragua" | datosCentroAmerica$Paises == "Costa Rica"| datosCentroAmerica$Paises == "El Salvador" | datosCentroAmerica$Paises == "Belize",]
 datosCentroAmerica
 Ejex <- datosCentroAmerica["Paises"]
 Ejey <- datosCentroAmerica["x"] 
@@ -30,9 +30,9 @@ legend("bottomleft",datosCentroAmerica$Paises,cex = 0.5, fill = datosCentroAmeri
 
 
 informacion <- read.csv(archivo)
-columnasReporte1 <- c("Sales.Channel")
+columnasReporte1 <- c("Sales.Channel","Units.Sold")
 datos1 <- informacion[columnasReporte1]
-datos1 <- cbind(datos1,numero = c(1))
+datos1 <- cbind(datos1,numero = datos1$Units.Sold)
 datos1 <- aggregate(datos1$numero, by=list(Sales.Channel=datos1$Sales.Channel), FUN=sum)
 #head(datos1,n = 10L)
 # Data
@@ -44,19 +44,12 @@ data <- data.frame(
 
 # Increase bottom margin
 par(mar=c(6,4,4,4))
-
-
 # Basic Barplot
 my_bar <- barplot(data$average , border=F , names.arg=data$name , 
                   las=2 , 
                   col=c(rgb(0.3,0.1,0.4,0.6) , rgb(0.3,0.5,0.4,0.6) , rgb(0.3,0.9,0.4,0.6) ,  rgb(0.3,0.9,0.4,0.6)) , 
-                  
                   main="Total Ventas Online y Offline" )
-
-# Add abline
-
-# Add the text 
-text(my_bar, data$average+0.4 , paste(" ", data$number, sep="") ,cex=1)
+text(my_bar, data$average+0.4 , paste("\n\n", data$number, sep="") ,cex=1)
 
 
 ##*****************************************
@@ -73,29 +66,19 @@ datos1 <- datos1[datos1$Order.Priority == 'M',]
 datos1 <- datos1[c("anio","numero")]
 datos1 <- aggregate(datos1$numero, by=list(Anios=datos1$anio), FUN=sum)
 datos1 <- datos1[with(datos1,order(-datos1$x)),]
-#datos1[1:10,] 
-#datos1
-
 # Data
 data <- data.frame(
   name = datos1$Anios,
   average = datos1$x,
   number = datos1$x
 )
-
 # Increase bottom margin
 par(mar=c(6,4,4,4))
-
-
 # Basic Barplot
 my_bar <- barplot(data$average , border=F , names.arg=data$name , 
                   las=2 , 
                   col=c(rgb(0.3,0.1,0.4,0.6) , rgb(0.3,0.5,0.4,0.6) , rgb(0.3,0.9,0.4,0.6) ,  rgb(0.3,0.9,0.4,0.6)) , 
-                  
                   main="ordenes de prioridad M por año" )
 
-# Add abline
-
-# Add the text 
-text(my_bar, data$average+0.4 , paste(" ", data$number, sep="") ,cex=1)
+text(my_bar, data$average+0.4 , paste("\n", data$number, sep="") ,cex=1)
 

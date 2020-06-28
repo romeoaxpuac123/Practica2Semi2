@@ -29,22 +29,13 @@ data <- data.frame(
   average = y,
   number = y
 )
-
-# Increase bottom margin
 par(mar=c(6,4,4,4))
-
-
 # Basic Barplot
 my_bar <- barplot(data$average , border=F , names.arg=data$name , 
                   las=2 , 
-                  col=c(rgb(0.3,0.1,0.4,0.6) , rgb(0.3,0.5,0.4,0.6) , rgb(0.3,0.9,0.4,0.6) ,  rgb(0.3,0.9,0.4,0.6)) , 
-                  
+                  col=c(rgb(0.3,0.1,0.4,0.6) , rgb(0.3,0.5,0.4,0.6) , rgb(0.3,0.9,0.4,0.6) ,  rgb(0.3,0.9,0.4,0.6)) ,
                   main="Potencia Tiros Alemanes" )
-
-# Add abline
-
-# Add the text 
-text(my_bar, data$average+0.4 , paste(" ", data$number, sep="") ,cex=1)
+text(my_bar, data$average+0.4 , paste("\n", data$number, sep="") ,cex=1)
 
 
 ##*****************************************
@@ -75,18 +66,10 @@ data <- data.frame(
 
 # Increase bottom margin
 par(mar=c(6,4,4,4))
-
-
-# Basic Barplot
 my_bar <- barplot(data$average , border=T , names.arg=data$name , 
                   las=1 , 
-                  col=c(rgb(0.3,0.1,0.4,0.6) , rgb(0.3,0.5,0.4,0.6) , rgb(0.3,0.9,0.4,0.6) ,  rgb(0.3,0.9,0.4,0.6)) , 
-                  
+                  col=c(rgb(0.3,0.1,0.4,0.6) , rgb(0.3,0.5,0.4,0.6) , rgb(0.3,0.9,0.4,0.6) ,  rgb(0.3,0.9,0.4,0.6)) ,
                   main="Mejor y Peor Equipo con agresividad (Promedio)." )
-
-# Add abline
-
-# Add the text 
 text(my_bar, data$average+0.3 , paste("\n\nPROMEDIO: \n", data$number, sep="") ,cex=1)
 
 ##*****************************************
@@ -114,19 +97,9 @@ data <- data.frame(
   average = y,
   number = y
 )
-
-# Increase bottom margin
 par(mar=c(6,4,4,4))
-
-
-# Basic Barplot
 my_bar <- barplot(data$average , border=T , names.arg=data$name , 
                   las=1 , 
                   col=c(rgb(0.3,0.1,0.4,0.6) , rgb(0.3,0.5,0.4,0.6) , rgb(0.3,0.9,0.4,0.6) ,  rgb(0.3,0.9,0.4,0.6)) , 
-                  
                   main="Mejor y Peor Dribbling por Equipo (Promedio)." )
-
-# Add abline
-
-# Add the text 
 text(my_bar, data$average+0.3 , paste("\n\nPROMEDIO: \n", data$number, sep="") ,cex=1)
